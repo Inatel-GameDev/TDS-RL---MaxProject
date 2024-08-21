@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : Entity
+public class PlayerMovement : Player
 {
 
     public Gun gun;
@@ -20,7 +20,8 @@ public class PlayerMovement : Entity
 
         moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
         moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
-
+        if(life <= 0)
+            morrer();
 
         switch (state)
         {
@@ -29,8 +30,6 @@ public class PlayerMovement : Entity
                     state = 1;
                 break;
             case 1://WALKING ON GROUND
-
-
 
             
                 break;
@@ -59,15 +58,22 @@ public class PlayerMovement : Entity
                 break;
             case 1://Walking on ground
 
-                position.x = rb.position.x + moveHorizontal*speed;
-                position.y = rb.position.y + moveVertical*speed;
-
-                rb.position = position;
-                Debug.Log("Ta aqui!");
+                groundMovement();
+                
                 state = 0;
                 break;
         }
         centerRb.position = rb.position;
     }
+
+
+    private void groundMovement()
+    {
+        position.x = rb.position.x + moveHorizontal * speed;
+        position.y = rb.position.y + moveVertical * speed;
+
+        rb.position = position;
+    }
+
 
 }

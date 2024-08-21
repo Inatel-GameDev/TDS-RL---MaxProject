@@ -11,16 +11,17 @@ public class Entity : MonoBehaviour
     protected float moveVertical;
     public float speed;
     public Vector2 position;
+    [SerializeField] public float life;
+    public float danoBase;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ReduzirVida(float dano)
     {
-        
+        life -= dano;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void morrer()
     {
-        
+        this.gameObject.SetActive(false);
     }
+
 }
