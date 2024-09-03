@@ -124,9 +124,9 @@ GameObject:
   - component: {fileID: 4217431410653056685}
   - component: {fileID: 3276649220491128483}
   - component: {fileID: 645227785174061397}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: IA_HELPER
-  m_TagString: Player
+  m_TagString: PlayerFinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,8 +462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d758e01366e2ebf4dbffa902339dc007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.4
+  state: 0
+  speed: 0.25
   position: {x: 0, y: 0}
+  life: 100
+  danoBase: 10
+  sprite: {fileID: 0}
+  lookingRight: 0
   gun: {fileID: 687599007042666155}
   centerRb: {fileID: 3697488929707259284}
 --- !u!61 &5284429550202081142

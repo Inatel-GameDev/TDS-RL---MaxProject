@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4779235761487733727}
   - component: {fileID: 3431157828957457316}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Pistol_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -164,3 +164,4 @@ MonoBehaviour:
   damageBullet: 2
   enemy: {fileID: 0}
   playerScr: {fileID: 0}
+  playerObj: {fileID: 0}

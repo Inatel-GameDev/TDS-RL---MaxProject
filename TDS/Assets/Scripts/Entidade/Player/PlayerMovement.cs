@@ -33,6 +33,9 @@ public class PlayerMovement : Player
 
             
                 break;
+            case 2:
+                //tanking damage
+                break;
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -60,6 +63,10 @@ public class PlayerMovement : Player
 
                 groundMovement();
                 
+                state = 0;
+                break;
+            case 2:
+                //tanking damage
                 state = 0;
                 break;
         }

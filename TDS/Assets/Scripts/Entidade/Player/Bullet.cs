@@ -19,9 +19,11 @@ public class Bullet : MonoBehaviour
                 
         
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.tag != "PlayerFinder" && collision.tag != "AttackColider") 
+            Destroy(gameObject);
         enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null && !colidiu)
         {
@@ -30,5 +32,5 @@ public class Bullet : MonoBehaviour
         }
 
     }
-
+    
 }

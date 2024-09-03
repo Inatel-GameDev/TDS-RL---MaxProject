@@ -141,7 +141,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974080454540223254}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -158,7 +158,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8217313410635618481
 MonoBehaviour:
@@ -172,13 +172,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c969f45c52e22ad4fbe5351abf73f0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   speed: 0.09
   position: {x: 0, y: 0}
-  detectionRadius: 5
+  life: 60
+  danoBase: 5
+  sprite: {fileID: 356169492343698463}
+  lookingRight: 1
+  detectionRadius: 8
+  detectionWallRadius: 3
   numberOfRays: 36
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
+  inRange: 0
+  randomMoveDuration: 2
+  inicialTimeAtk: 0.6
+  repitTimeAtk: 1.2
+  tryChangeDirectionTime: 2
 --- !u!1 &6822897400266223218
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,9 +200,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2476345964750719661}
   - component: {fileID: 6050059513934930674}
+  - component: {fileID: 3928856653214307260}
   m_Layer: 0
   m_Name: AttackCollider
-  m_TagString: Untagged
+  m_TagString: AttackColider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,9 +252,22 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3928856653214307260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822897400266223218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79330848a7d18614bae4caf785d7e7d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
