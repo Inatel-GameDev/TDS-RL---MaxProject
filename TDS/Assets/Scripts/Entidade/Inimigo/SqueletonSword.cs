@@ -39,9 +39,8 @@ public class SqueletonSword : Enemy
 
         if(inRange == false)
         {
-            StopCoroutine(RepeatAtack(2f, 5f, danoBase));
+            StopCoroutine(RepeatAtack(inicialTimeAtk, repitTimeAtk, danoBase));
         }
-        Debug.Log(inRange);
 
         switch (state)
         {

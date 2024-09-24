@@ -11,16 +11,26 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Enemy : Entity
 {
+    [Header("Objetos Unity")]
     protected GameObject playerObj;
     protected PlayerMovement playerScr;
+    public LayerMask detectionLayer; // Camada que você quer detectar (como o jogador)
+    [Header("Variáveis")]
     public float detectionRadius; // Raio máximo de detecção
     public float detectionWallRadius;
     public int numberOfRays = 36; // Número de raycasts (quanto mais, mais preciso)
-    public LayerMask detectionLayer; // Camada que você quer detectar (como o jogador)
     public bool inRange = false;
     Vector2 randomDirection;
     [SerializeField] float randomMoveDuration;//Duração que ele vai ficar rondando até mudar de rotina
     protected float randomMoveTimer;
+
+
+    /*
+     I wake up to the sounds of the silence that allows
+     For my mind to run around with my ear up to the ground
+     I'm searching to behold the stories that are told
+     When my back is to the world that was smiling when I turned
+     */
 
     protected void followPlayer()
     {
@@ -86,8 +96,8 @@ public class Enemy : Entity
         }
         return wallDetected;
     }
-        public Vector2 AngleToVector2(float angle)
-    {
+    public Vector2 AngleToVector2(float angle)
+    {   //Essa função serve pra calucular a distancia dos raycasts
         float radian = angle * Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
     }
@@ -152,7 +162,7 @@ public class Enemy : Entity
         {
             damageToPlayer(dano);
             yield return new WaitForSeconds(repeatRate);
-            Debug.Log("To colidindo");
+            //Debug.Log("To colidindo");
         }
     }
 

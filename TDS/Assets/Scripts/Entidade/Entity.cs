@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-
-    protected Rigidbody2D rb;
-    public int state;
+    //Variáveis
+    [Header("VarAUX")]
+    public int state; 
     protected float moveHorizontal;
     protected float moveVertical;
+    public bool lookingRight;
+
+    [Header("Player Stats")]
     public float speed;
-    public Vector2 position;
     [SerializeField] public float life;
     public float danoBase;
+
+    [Header("Objetos")]
+    public Vector2 position;
+    protected Rigidbody2D rb;
     [SerializeField] public SpriteRenderer sprite;
-    public bool lookingRight;
+    
 
     public void ReduzirVida(float dano)
     {
@@ -23,6 +29,7 @@ public class Entity : MonoBehaviour
 
     protected void morrer()
     {
+        //Dar overight em cada classe
         this.gameObject.SetActive(false);
     }
 

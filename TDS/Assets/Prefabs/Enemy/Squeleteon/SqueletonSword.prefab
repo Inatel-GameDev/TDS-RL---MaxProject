@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5224095697444899825}
   - component: {fileID: 3518684668918063577}
   - component: {fileID: 8217313410635618481}
+  - component: {fileID: 2589273620269985874}
   m_Layer: 0
   m_Name: SqueletonSword
   m_TagString: Untagged
@@ -190,6 +191,33 @@ MonoBehaviour:
   inicialTimeAtk: 0.6
   repitTimeAtk: 1.2
   tryChangeDirectionTime: 2
+--- !u!114 &2589273620269985874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974080454540223254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f32354bf8599149a22d0707b35d74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  speed: 0
+  position: {x: 0, y: 0}
+  life: 0
+  danoBase: 0
+  sprite: {fileID: 0}
+  lookingRight: 0
+  detectionRadius: 0
+  detectionWallRadius: 0
+  numberOfRays: 36
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  inRange: 0
+  randomMoveDuration: 0
 --- !u!1 &6822897400266223218
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,4 +298,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79330848a7d18614bae4caf785d7e7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScript: {fileID: 0}
+  playerObject: {fileID: 5094207183800566056, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}

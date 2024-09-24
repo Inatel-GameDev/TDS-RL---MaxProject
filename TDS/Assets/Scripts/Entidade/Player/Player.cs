@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Player : Entity
 {
-  
+
+    [Header("Player Stats")]
+    //Herdadas
+    //float life
+    //float speed
+    //float danoBase
+    public float iaHelperSize;
+
 
 
 }
