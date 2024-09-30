@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItenPickup : Interact
 {
-
+    [Header("Objetos Unity")]
     private GameObject protagOBJ;
     private Player protagSRC;
     private GameObject inventarioOBJ;

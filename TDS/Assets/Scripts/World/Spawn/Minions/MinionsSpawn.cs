@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MinionsSpawn : MonoBehaviour
 {
+    [Header("Objetos Unity")]
     public GameObject mobPrefab;
+    [SerializeField] private GameObject[] spawnsObjects;
+
+    [Header("Variáveis")]
     public string dificult;
     public string fase; // Vou mecher com esse pra frente
     [SerializeField] float timeToSpawn;
-    [SerializeField] private GameObject[] spawnsObjects;
     [SerializeField] private int numWaves;
     private int wavesCont = 0;
 

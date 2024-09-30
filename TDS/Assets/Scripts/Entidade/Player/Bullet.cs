@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float damageBullet;
+    
+    [Header("Objetos Unity")]
     public Enemy enemy;
     public PlayerMovement playerScr;
     public GameObject playerObj;
+
+    [Header("Variáveis")]
     float dano;
     bool colidiu = false;
+    [SerializeField] float damageBullet;
 
     public void Awake()
     {

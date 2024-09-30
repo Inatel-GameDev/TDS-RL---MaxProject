@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PlayerMovement : Player
 {
-
+    [Header("Objetos Unity")]
     public Gun gun;
-    Vector2 m_Position;
     public Rigidbody2D centerRb;
+
+    [Header("Variáveis")]
+    Vector2 m_Position;
 
     private void Start()
     {

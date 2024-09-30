@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class IA_Helper : MonoBehaviour
 {
-    
+    [Header("Objetos Unity")]
     [SerializeField] private GameObject Player;
     private CircleCollider2D circleCollider;
 
+    [Header("Variáveis")]
     [SerializeField] float pantQTD;
     private float pantufas;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AVUP : ItenPickup
 {
+    [Header("Objetos Unity")]
     private GameObject inventarioObj;
     private Inventory inventarioScr;
     private void Awake()

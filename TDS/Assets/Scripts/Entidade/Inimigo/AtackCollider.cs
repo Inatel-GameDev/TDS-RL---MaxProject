@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AtackCollider : MonoBehaviour
 {
+    [Header("Objetos Unity")]
     public GameObject playerObject;
     private GameObject inimigoObject;
 

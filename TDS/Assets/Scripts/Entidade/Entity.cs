@@ -11,12 +11,12 @@ public class Entity : MonoBehaviour
     protected float moveVertical;
     public bool lookingRight;
 
-    [Header("Player Stats")]
+    [Header("Stats")]
     public float speed;
     [SerializeField] public float life;
     public float danoBase;
 
-    [Header("Objetos")]
+    [Header("Objetos Unity")]
     public Vector2 position;
     protected Rigidbody2D rb;
     [SerializeField] public SpriteRenderer sprite;
