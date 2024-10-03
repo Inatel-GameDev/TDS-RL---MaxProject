@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &238433111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,9 +287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobPrefab: {fileID: 3974080454540223254, guid: 3034ed78a63530f47bc1ec5fd4db4d22, type: 3}
-  dificult: Medium
-  fase: 0
-  timeToSpawn: 11
   spawnsObjects:
   - {fileID: 1988392969}
   - {fileID: 2133488589}
@@ -299,6 +296,9 @@ MonoBehaviour:
   - {fileID: 1962913155}
   - {fileID: 2144405590}
   - {fileID: 1086467995}
+  dificult: Medium
+  fase: 0
+  timeToSpawn: 11
   numWaves: 4
 --- !u!4 &238433112
 Transform:
