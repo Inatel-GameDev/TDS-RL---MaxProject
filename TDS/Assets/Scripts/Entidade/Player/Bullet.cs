@@ -26,15 +26,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "PlayerFinder" && collision.tag != "AttackColider") 
+        if (collision.tag == "Wall" && collision.tag == "Enemy")
             Destroy(gameObject);
+
         enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null && !colidiu)
         {
             enemy.ReduzirVida(dano);
             colidiu = true;
         }
-
+        
     }
     
 }

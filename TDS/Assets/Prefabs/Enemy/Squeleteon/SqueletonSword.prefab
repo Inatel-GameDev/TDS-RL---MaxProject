@@ -174,18 +174,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  lookingRight: 1
   speed: 0.09
-  position: {x: 0, y: 0}
   life: 60
   danoBase: 5
+  position: {x: 0, y: 0}
   sprite: {fileID: 356169492343698463}
-  lookingRight: 1
-  detectionRadius: 8
-  detectionWallRadius: 3
-  numberOfRays: 36
   detectionLayer:
     serializedVersion: 2
     m_Bits: 200
+  detectionRadius: 8
+  detectionWallRadius: 3
+  numberOfRays: 36
   inRange: 0
   randomMoveDuration: 2
   inicialTimeAtk: 0.6
@@ -204,18 +204,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  lookingRight: 0
   speed: 0
-  position: {x: 0, y: 0}
   life: 0
   danoBase: 0
+  position: {x: 0, y: 0}
   sprite: {fileID: 0}
-  lookingRight: 0
-  detectionRadius: 0
-  detectionWallRadius: 0
-  numberOfRays: 36
   detectionLayer:
     serializedVersion: 2
     m_Bits: 0
+  detectionRadius: 0
+  detectionWallRadius: 0
+  numberOfRays: 36
   inRange: 0
   randomMoveDuration: 0
 --- !u!1 &6822897400266223218

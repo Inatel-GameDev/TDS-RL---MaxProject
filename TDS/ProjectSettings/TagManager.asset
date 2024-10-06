@@ -7,6 +7,8 @@ TagManager:
   - PlayerFinder
   - Wall
   - AttackColider
+  - Item
+  - Enemy
   layers:
   - Default
   - TransparentFX
