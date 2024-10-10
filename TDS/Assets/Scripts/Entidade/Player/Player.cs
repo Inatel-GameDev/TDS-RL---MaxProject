@@ -13,6 +13,6 @@ public class Player : Entity
     public float iaHelperSize;
     public float defense;
 
-
+    
 
 }
