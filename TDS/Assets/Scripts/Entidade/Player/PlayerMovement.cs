@@ -22,8 +22,9 @@ public class PlayerMovement : Player
 
         moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
         moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
-        if(life <= 0)
-            morrer();
+
+        if (life <= 0)
+            logicaVida();
 
         switch (state)
         {
@@ -75,6 +76,19 @@ public class PlayerMovement : Player
         centerRb.position = rb.position;
     }
 
+
+    private void logicaVida()
+    {
+
+        if (life <= 0)
+            morrer();
+    }
+
+    public void aumentaVida(float vida)
+    {
+        vidaTotal += vida;
+        life += vida;
+    }
 
     private void groundMovement()
     {

@@ -14,9 +14,9 @@ public class AtackCollider : MonoBehaviour
         {
             inimigoObject = transform.parent.gameObject;
             inimigoObject.GetComponent<Enemy>().state = 2;
-            Debug.Log("Entrou");
+            //Debug.Log("Entrou");
             inimigoObject.GetComponent<Enemy>().inRange = true;
-            Debug.Log("Passou");
+            //Debug.Log("Passou");
             playerObject.GetComponent<PlayerMovement>().state = 2;
            
         }
@@ -29,7 +29,7 @@ public class AtackCollider : MonoBehaviour
             inimigoObject = transform.parent.gameObject;
             //inimigoObject.GetComponent<Enemy>().state = 0; // Não ta funcionando
             inimigoObject.GetComponent<Enemy>().inRange = false;
-            Debug.Log("saiu");
+            //Debug.Log("saiu");
         }
     }
     

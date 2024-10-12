@@ -7,18 +7,17 @@ public class HealthManager : MonoBehaviour
 {
 
     [SerializeField] private Image healthBar;
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerMovement player;
 
     private void Update()
     {
-        HealthBarManager(100,player.life);
+        HealthBarManager(player.vidaTotal,player.life);
     }
 
     void HealthBarManager(float maxLife, float life)
     {
         
-        float normalizedLife = (life*100f)/maxLife;
-
+        float normalizedLife = (life*100f)/(maxLife);
         healthBar.fillAmount = normalizedLife/100f;
 
     }

@@ -13,7 +13,7 @@ public class Enemy : Entity
 {
     [Header("Objetos Unity")]
     protected GameObject playerObj;
-    protected PlayerMovement playerScr;
+    protected Player playerScr;
     public LayerMask detectionLayer; // Camada que você quer detectar (como o jogador)
     [Header("Variáveis")]
     public float detectionRadius; // Raio máximo de detecção
@@ -151,7 +151,7 @@ public class Enemy : Entity
 
     protected void damageToPlayer(float dano)
     {
-        playerScr = playerObj.GetComponent<PlayerMovement>();
+        playerScr = playerObj.GetComponent<Player>();
         playerScr.life -= dano;
     }
 

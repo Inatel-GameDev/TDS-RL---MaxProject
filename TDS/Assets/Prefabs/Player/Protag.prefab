@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 4217431410653056685}
   - component: {fileID: 3276649220491128483}
   - component: {fileID: 645227785174061397}
+  - component: {fileID: 8206088471127836501}
   m_Layer: 7
   m_Name: IA_HELPER
   m_TagString: PlayerFinder
@@ -232,7 +233,21 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
+--- !u!114 &8206088471127836501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548137688649821809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77416028d5b193441b069963c287681a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 5094207183800566056}
+  pantQTD: 0
 --- !u!1 &4388027088208140118
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +322,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -334,6 +349,56 @@ MonoBehaviour:
   bulletPreab: {fileID: 8495689411794316228, guid: 8dd797da6d6d9b94f9b5f7e91383c973, type: 3}
   firePoint: {fileID: 4009609131278244667}
   fireForce: 20
+--- !u!1 &4895973008772589425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106362362958172772}
+  - component: {fileID: 6352926046441514255}
+  m_Layer: 3
+  m_Name: Inventario
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106362362958172772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895973008772589425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8619228507085389472}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6352926046441514255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895973008772589425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7c03c65cbdcba4da3598aea4c1a871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "tuf\xE9": 0
+  pantufasDeBandidos: 0
+  moeda: 0
+  Leite: 0
+  macarroneide: 0
+  luzDoRetorno: 0
 --- !u!1 &5094207183800566056
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +412,7 @@ GameObject:
   - component: {fileID: 4483166491479612147}
   - component: {fileID: 4718170675731586850}
   - component: {fileID: 5284429550202081142}
+  - component: {fileID: -5589142838233035924}
   m_Layer: 3
   m_Name: Protag
   m_TagString: Player
@@ -369,6 +435,7 @@ Transform:
   m_Children:
   - {fileID: 603340712616240556}
   - {fileID: 4217431410653056685}
+  - {fileID: 1106362362958172772}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5677867377749207804
@@ -411,7 +478,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.7169812, b: 0.092477374, a: 1}
   m_FlipX: 0
@@ -462,13 +529,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d758e01366e2ebf4dbffa902339dc007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  speed: 0.25
-  position: {x: 0, y: 0}
+  state: 2
+  lookingRight: 0
+  speed: 0.1
   life: 100
   danoBase: 10
+  vidaTotal: 0
+  position: {x: 0, y: 0}
   sprite: {fileID: 0}
-  lookingRight: 0
+  iaHelperSize: 0
+  defense: 0
   gun: {fileID: 687599007042666155}
   centerRb: {fileID: 3697488929707259284}
 --- !u!61 &5284429550202081142
@@ -516,6 +586,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5589142838233035924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094207183800566056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a355e3c71b7784b89f121e749328f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  lookingRight: 0
+  speed: 0.25
+  life: 100
+  danoBase: 10
+  vidaTotal: 100
+  position: {x: 0, y: 0}
+  sprite: {fileID: 0}
+  iaHelperSize: 0
+  defense: 0
 --- !u!1 &6018152311997344531
 GameObject:
   m_ObjectHideFlags: 0

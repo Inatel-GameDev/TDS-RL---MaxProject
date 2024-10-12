@@ -12,9 +12,10 @@ public class Entity : MonoBehaviour
     public bool lookingRight;
 
     [Header("Stats")]
-    public float speed;
-    [SerializeField] public float life;
-    public float danoBase;
+    [SerializeField]public float speed;
+    [SerializeField]public float life;
+    [SerializeField]public float danoBase;
+    [SerializeField]public float vidaTotal;
 
     [Header("Objetos Unity")]
     public Vector2 position;
