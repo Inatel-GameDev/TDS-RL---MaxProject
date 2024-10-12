@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int Tufé;
-    public int pantufasDeBandidos;
+    [SerializeField] public int tufé;
+    [SerializeField] public int pantufasDeBandidos;
+    [SerializeField] public int moeda;
+    [SerializeField] public int Leite;
+    [SerializeField] public int macarroneide;
+    [SerializeField] public int luzDoRetorno;
 
     public void AdicionaPantufas()
     {
@@ -14,7 +18,25 @@ public class Inventory : MonoBehaviour
 
     public void AdicionaTufé()
     {
-        Tufé++;
+        tufé++;
+    }
+
+    public void AdicionaMoeda()
+    {
+        moeda += 1 * pantufasDeBandidos;
+    }
+
+    public void AdicionaLeite()
+    {
+        Leite++;
+    }
+    public void AdicionaMacarroneide()
+    {
+        macarroneide++;
+    }
+    public void AdicionaLuzDoRetorno()
+    {
+        luzDoRetorno++;
     }
 
 }

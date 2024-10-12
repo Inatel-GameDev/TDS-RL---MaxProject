@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ItenPickup : Interact
@@ -25,10 +26,10 @@ public class ItenPickup : Interact
         inventarioSRC = inventarioOBJ.GetComponent<Inventory>();
 
         float pantufas = inventarioSRC.pantufasDeBandidos;
-        float tufezin = inventarioSRC.Tufé;
+        float tufezin = inventarioSRC.tufé;
 
         float playerLife;
-        float playerSpeed = (1 + tufezin/2.15f)/10;
+        float playerSpeed = 0.1f + math.log2(tufezin+1)/36;
         float playerDanoBase;
         float playerIAhelperSize = pantufas;
 
