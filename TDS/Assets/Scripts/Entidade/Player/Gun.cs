@@ -8,26 +8,34 @@ public class Gun : MonoBehaviour
     public GameObject bulletPreab;
     public Transform firePoint;
     [Header("Variáveis")]
-    public float fireForce = 20f;
+    public float fireForce = 1.2f;
     public bool canFire = true;
     public bool isReloading = false;
     public int maxMag = 9;
     public int currentMag = 9;
 
     // fireDelay em segundos e fireRate em fixedGameUpdates
-    public float fireDelay = 0.2f;
-    private float fireRate = fireDelay * 50.0;
+    public float fireDelay;
+    private float fireRate;
 
-    // Enquanto não houver animações
-    public float reloadDelay = 1.5f
-    private float reloadSpeed = reloadDelay * 50.0;
+    // Enquanto não houver animaçõesS
+    public float reloadDelay;
+    private float reloadSpeed;
 
     // Quantos fixedGameUpdates ocorreram desde um determinado evento
     private int fUpdateCount = 0;
 
+    public void Start()
+    {
+        fireDelay = 0.4f;
+        fireRate = fireDelay * 50.0f;
+        reloadDelay = 1.5f;
+        reloadSpeed = reloadDelay * 50.0f;
+    }
+
     public void Fire()
     {
-        if (canFire == true && isReloading == false &&  currentMag > 0)
+        if (canFire == true && isReloading == false && currentMag > 0)
         {
             GameObject bullet = Instantiate(bulletPreab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
@@ -49,16 +57,18 @@ public class Gun : MonoBehaviour
     void FixedUpdate()
     {
         // Implementação da fire rate
-        if(canFire == false && isReloading == false)
+        if (canFire == false && isReloading == false)
         {
-            if(fUpdateCount<fireRate)
+            if (fUpdateCount < fireRate)
             {
                 fUpdateCount++;
+                Debug.Log("To no if"+ fUpdateCount+" lol  "+ fireRate);
             }
             else
             {
                 fUpdateCount = 0;
                 canFire = true;
+                Debug.Log("To no else" + fUpdateCount + " lol  " + fireRate);
             }
         }
 
@@ -73,7 +83,8 @@ public class Gun : MonoBehaviour
             {
                 fUpdateCount = 0;
                 canFire = true;
-                isReloading == false;
+                isReloading = false;
             }
         }
+    }
 }

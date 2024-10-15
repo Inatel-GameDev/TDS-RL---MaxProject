@@ -12,6 +12,5 @@ public class Player : Entity
     //float speed
     //float danoBase
     public float iaHelperSize;
-    public float defense;
 
 }

@@ -27,14 +27,18 @@ public class ItenPickup : Interact
 
         float pantufas = inventarioSRC.pantufasDeBandidos;
         float tufezin = inventarioSRC.tufé;
+        float leite = inventarioSRC.leite;
 
         float playerLife;
         float playerSpeed = 0.1f + math.log2(tufezin+1)/36;
         float playerDanoBase;
         float playerIAhelperSize = pantufas;
+        float shield = leite * 15;
 
         protagSRC.iaHelperSize = playerIAhelperSize;
         protagSRC.speed = playerSpeed;
+        protagSRC.shield = shield;
+        Debug.Log(shield);
 
     }
 

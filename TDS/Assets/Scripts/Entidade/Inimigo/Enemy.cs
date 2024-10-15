@@ -152,7 +152,7 @@ public class Enemy : Entity
     protected void damageToPlayer(float dano)
     {
         playerScr = playerObj.GetComponent<Player>();
-        playerScr.life -= dano;
+        playerScr.ReduzirVida(dano);
     }
 
     public IEnumerator RepeatAtack(float initialDelay, float repeatRate,float dano)

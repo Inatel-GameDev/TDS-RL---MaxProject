@@ -41,7 +41,7 @@ public class PlayerMovement : Player
                 break;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             gun.Fire();
         }

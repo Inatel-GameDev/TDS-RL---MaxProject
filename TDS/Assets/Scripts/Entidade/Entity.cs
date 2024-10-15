@@ -16,17 +16,37 @@ public class Entity : MonoBehaviour
     [SerializeField]public float life;
     [SerializeField]public float danoBase;
     [SerializeField]public float vidaTotal;
+    [SerializeField]public float shield;
+    [SerializeField]public float shieldTotal;
 
     [Header("Objetos Unity")]
     public Vector2 position;
     protected Rigidbody2D rb;
     [SerializeField] public SpriteRenderer sprite;
-    
+
 
     public void ReduzirVida(float dano)
     {
-        life -= dano;
+        // Se o dano é menor ou igual ao escudo, apenas reduz o escudo
+        if (dano <= shield)
+        {
+            shield -= dano;
+        }
+        else
+        {
+            // Caso o dano seja maior que o escudo, calcula o dano que sobraria para a vida
+            float damageTaken = dano - shield;
+            shield = 0;  // Escudo é reduzido a zero
+            life -= damageTaken;  // Aplica o dano restante na vida
+        }
+
+        // Verifica se a vida foi reduzida a zero ou menos, e chama o método de morte
+        if (life <= 0)
+        {
+            morrer();
+        }
     }
+
 
     protected void morrer()
     {
