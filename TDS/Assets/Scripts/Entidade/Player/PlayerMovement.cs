@@ -12,6 +12,7 @@ public class PlayerMovement : Player
     [Header("Variáveis")]
     Vector2 m_Position;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,7 +24,7 @@ public class PlayerMovement : Player
         moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
         moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
 
-        if (life <= 0)
+        if (vida <= 0)
             logicaVida();
 
         switch (state)
@@ -47,7 +48,6 @@ public class PlayerMovement : Player
         }
 
         m_Position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
     }
 
     private void FixedUpdate()
@@ -80,14 +80,19 @@ public class PlayerMovement : Player
     private void logicaVida()
     {
 
-        if (life <= 0)
+        if (vida <= 0)
             morrer();
     }
 
     public void aumentaVida(float vida)
     {
         vidaTotal += vida;
-        life += vida;
+        base.vida += vida;
+    }
+    public void aumentaShield(float shieldGanho)
+    {
+        shield = shieldGanho;
+        shieldTotal = shieldGanho;
     }
 
     private void groundMovement()

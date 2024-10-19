@@ -30,19 +30,23 @@ public class HealthManager : MonoBehaviour
         // Verifica se playerSRC foi encontrado antes de chamar os métodos
         if (playerSRC != null)
         {
-            HealthBarManager(playerSRC.vidaTotal, playerSRC.life);
+            HealthBarManager(playerSRC.vidaTotal, playerSRC.vida, playerSRC.shield);
             ShieldBarManager(playerSRC.vidaTotal, playerSRC.shield);
         }
     }
 
-    void HealthBarManager(float maxLife, float life)
+    void HealthBarManager(float maxLife, float life, float shildTotal)
     {
         float normalizedLife = (life * 100f) / maxLife;
         if (healthBar != null)
         {
             healthBar.fillAmount = normalizedLife / 100f;
         }
-        if (lifeTxt != null)
+        if((lifeTxt != null) && shildTotal > 0)
+        {
+            lifeTxt.text = life + "+<color=#66CCFF>" + shildTotal + "</color>/" + maxLife;
+        }
+        else  if (lifeTxt != null)
         {
             lifeTxt.text = life + "/" + maxLife;
         }

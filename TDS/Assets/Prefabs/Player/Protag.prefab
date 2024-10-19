@@ -349,6 +349,12 @@ MonoBehaviour:
   bulletPreab: {fileID: 8495689411794316228, guid: 8dd797da6d6d9b94f9b5f7e91383c973, type: 3}
   firePoint: {fileID: 4009609131278244667}
   fireForce: 20
+  canFire: 1
+  isReloading: 0
+  maxMag: 9
+  currentMag: 9
+  fireDelay: 0.1
+  reloadDelay: 1
 --- !u!1 &4895973008772589425
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +402,7 @@ MonoBehaviour:
   "tuf\xE9": 0
   pantufasDeBandidos: 0
   moeda: 0
-  Leite: 0
+  leite: 0
   macarroneide: 0
   luzDoRetorno: 0
 --- !u!1 &5094207183800566056
@@ -412,7 +418,8 @@ GameObject:
   - component: {fileID: 4483166491479612147}
   - component: {fileID: 4718170675731586850}
   - component: {fileID: 5284429550202081142}
-  - component: {fileID: -5589142838233035924}
+  - component: {fileID: 5380995776507723415}
+  - component: {fileID: 5102907327053976261}
   m_Layer: 3
   m_Name: Protag
   m_TagString: Player
@@ -532,13 +539,16 @@ MonoBehaviour:
   state: 2
   lookingRight: 0
   speed: 0.1
-  life: 100
+  vida: 100
   danoBase: 10
-  vidaTotal: 0
+  vidaTotal: 100
+  vidaRegen: 1
+  shield: 0
+  shieldTotal: 0
+  shieldRegen: 4
   position: {x: 0, y: 0}
   sprite: {fileID: 0}
   iaHelperSize: 0
-  defense: 0
   gun: {fileID: 687599007042666155}
   centerRb: {fileID: 3697488929707259284}
 --- !u!61 &5284429550202081142
@@ -586,7 +596,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-5589142838233035924
+--- !u!114 &5380995776507723415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,19 +605,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5094207183800566056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a355e3c71b7784b89f121e749328f1, type: 3}
+  m_Script: {fileID: 11500000, guid: e28d87e6710c0824c850a2ba706bbe6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  lookingRight: 0
-  speed: 0.25
-  life: 100
-  danoBase: 10
-  vidaTotal: 100
-  position: {x: 0, y: 0}
-  sprite: {fileID: 0}
-  iaHelperSize: 0
-  defense: 0
+--- !u!114 &5102907327053976261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094207183800566056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760ec5dad6753d444a6852b6280bf733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6018152311997344531
 GameObject:
   m_ObjectHideFlags: 0

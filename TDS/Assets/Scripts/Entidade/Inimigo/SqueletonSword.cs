@@ -24,7 +24,7 @@ public class SqueletonSword : Enemy
 
     void Update()
     {
-        if (life <= 0)
+        if (vida <= 0)
             morrer();
 
         //Vendo se o player ta em cena não tenho certeza da necessidade disso

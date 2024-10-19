@@ -21,7 +21,7 @@ public class MinionsSpawn : MonoBehaviour
     void Start()
     {
         ConfigureSpawns();
-        InvokeRepeating("spawnMob", 0.1f, timeToSpawn);
+        InvokeRepeating("spawnMob", 1f, timeToSpawn);
     }
 
     void ConfigureSpawns()
