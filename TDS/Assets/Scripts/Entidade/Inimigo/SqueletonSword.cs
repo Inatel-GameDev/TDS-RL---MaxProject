@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class SqueletonSword : Enemy
 {
@@ -11,6 +12,8 @@ public class SqueletonSword : Enemy
     GameObject attackColider;
     private bool changingDirection;
     [SerializeField] private float tryChangeDirectionTime;
+    [Header("Stats")]
+    int moedasQTD;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +21,11 @@ public class SqueletonSword : Enemy
         state = 0;
         rb = GetComponent<Rigidbody2D>();
         lookingRight = true;
-        playerObj = GameObject.FindWithTag("Player");//Tava dando erro sem isso
-        
+        moedasQTD = 1;
     }
 
     void Update()
     {
-        if (vida <= 0)
-            morrer();
-
         //Vendo se o player ta em cena não tenho certeza da necessidade disso
         if (playerObj == null)
         {

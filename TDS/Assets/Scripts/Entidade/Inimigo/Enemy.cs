@@ -31,6 +31,11 @@ public class Enemy : Entity
      I'm searching to behold the stories that are told
      When my back is to the world that was smiling when I turned
      */
+   
+    private void Awake()
+    {
+        playerObj = GameObject.FindWithTag("Player");//Tava dando erro sem isso
+    }
 
     protected void followPlayer()
     {

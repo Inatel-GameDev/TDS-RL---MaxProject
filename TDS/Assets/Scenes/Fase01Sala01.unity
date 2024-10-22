@@ -15502,11 +15502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8619228507085389472, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8619228507085389472, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8619228507085389472, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27506,6 +27506,7 @@ GameObject:
   - component: {fileID: 2088547816}
   - component: {fileID: 2088547818}
   - component: {fileID: 2088547817}
+  - component: {fileID: 2088547819}
   m_Layer: 5
   m_Name: MoneyUI
   m_TagString: Untagged
@@ -27572,6 +27573,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088547815}
   m_CullTransparentMesh: 1
+--- !u!114 &2088547819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088547815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba3091fd33b951408e9a3dba430a584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyQuantity: {fileID: 1092172295}
 --- !u!1 &2133488589
 GameObject:
   m_ObjectHideFlags: 0

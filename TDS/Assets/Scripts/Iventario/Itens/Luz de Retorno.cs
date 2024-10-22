@@ -16,7 +16,7 @@ public class LuzdeRetorno : ItenPickup
 
     public override void Interacting()
     {
-        inventarioScr.AdicionaLuzDoRetorno();
+        inventarioScr.AdicionaDesfibrilador();
         base.Interacting();
     }
 }

@@ -24,12 +24,17 @@ public class Entity : MonoBehaviour
     [Header("Objetos Unity")]
     public Vector2 position;
     protected Rigidbody2D rb;
+    [SerializeField] protected Inventory inventory;
     [SerializeField] public SpriteRenderer sprite;
 
 
-    public void ReduzirVida(float dano)
+
+
+    public virtual void ReduzirVida(float dano)
     {
         // Se o dano é menor ou igual ao escudo, apenas reduz o escudo
+        
+        inventory = GameObject.Find("Inventario").GetComponent<Inventory>();
         if (dano <= shield)
         {
             shield -= dano;
@@ -45,14 +50,24 @@ public class Entity : MonoBehaviour
         // Verifica se a vida foi reduzida a zero ou menos, e chama o método de morte
         if (vida <= 0)
         {
-            morrer();
+            
+            if (inventory.desfibrilador <= 0)
+            {
+                morrer();
+            }
+            else
+            {
+                inventory.desfibrilador--;
+                inventory.AdicionaFibrilador();
+                vida = vidaTotal * 0.15f;
+            }
         }
     }
-
 
     protected void morrer()
     {
         //Dar overight em cada classe
+        inventory.AdicionaMoeda(1);
         this.gameObject.SetActive(false);
     }
 

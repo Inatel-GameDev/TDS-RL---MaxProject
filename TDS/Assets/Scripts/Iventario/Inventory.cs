@@ -9,7 +9,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] public int moeda;
     [SerializeField] public int leite;
     [SerializeField] public int macarroneide;
-    [SerializeField] public int luzDoRetorno;
+    [SerializeField] public int desfibrilador;
+    [SerializeField] public int fibrilador;
 
     public void AdicionaPantufas()
     {
@@ -21,9 +22,9 @@ public class Inventory : MonoBehaviour
         tufé++;
     }
 
-    public void AdicionaMoeda()
+    public void AdicionaMoeda(int qtd)
     {
-        moeda += 1 * pantufasDeBandidos;
+        moeda += qtd * (pantufasDeBandidos + 1);
     }
 
     public void AdicionaLeite()
@@ -34,9 +35,13 @@ public class Inventory : MonoBehaviour
     {
         macarroneide++;
     }
-    public void AdicionaLuzDoRetorno()
+    public void AdicionaDesfibrilador()
     {
-        luzDoRetorno++;
+        desfibrilador++;
+    }
+    public void AdicionaFibrilador()
+    {
+        fibrilador++;
     }
 
 }

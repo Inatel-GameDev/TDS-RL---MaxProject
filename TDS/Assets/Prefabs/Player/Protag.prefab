@@ -404,7 +404,8 @@ MonoBehaviour:
   moeda: 0
   leite: 0
   macarroneide: 0
-  luzDoRetorno: 0
+  desfibrilador: 0
+  fibrilador: 0
 --- !u!1 &5094207183800566056
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +548,7 @@ MonoBehaviour:
   shieldTotal: 0
   shieldRegen: 4
   position: {x: 0, y: 0}
+  inventory: {fileID: 6352926046441514255}
   sprite: {fileID: 0}
   iaHelperSize: 0
   gun: {fileID: 687599007042666155}

@@ -38,8 +38,6 @@ public class ItenPickup : Interact
         protagSRC.iaHelperSize = playerIAhelperSize;
         protagSRC.speed = playerSpeed;
         protagSRC.shieldTotal = shield;
-        Debug.Log(shield);
-
     }
 
 }
