@@ -15,6 +15,8 @@ public class SqueletonSword : Enemy
     [Header("Stats")]
     int moedasQTD;
 
+    const string ENEMY_RUN = "Enemy_Run";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,11 @@ public class SqueletonSword : Enemy
         rb = GetComponent<Rigidbody2D>();
         lookingRight = true;
         moedasQTD = 1;
+        sprite = GetComponent<SpriteRenderer>();
+        if (sprite == null) Debug.LogError("SpriteRenderer não encontrado!");
+
+        _animator = gameObject.GetComponent<Animator>();
+        if (_animator == null) Debug.LogError("Animator não encontrado!");
     }
 
     void Update()
@@ -49,6 +56,7 @@ public class SqueletonSword : Enemy
                     state = 1;
                 break;
             case 1://Perseguindo
+                ChangeAnimationState(ENEMY_RUN);
                 state = 0;
                 break;
             case 2://Atacando 

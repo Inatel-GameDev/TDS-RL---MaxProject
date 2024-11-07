@@ -14,7 +14,7 @@ public class ItenPickup : Interact
     public override void Interacting()
     {
         atualizaStatus();
-        this.gameObject.SetActive(false);
+        StartCoroutine(Destroy_it());
     }
 
     private void atualizaStatus()

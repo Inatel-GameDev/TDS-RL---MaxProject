@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour
     protected float moveVertical;
     public bool lookingRight;
 
+
     [Header("Stats")]
     [SerializeField]public float speed;
     [SerializeField]public float vida;
@@ -26,6 +27,8 @@ public class Entity : MonoBehaviour
     protected Rigidbody2D rb;
     [SerializeField] protected Inventory inventory;
     [SerializeField] public SpriteRenderer sprite;
+    protected Animator _animator;
+    protected string _currentState;
 
 
 
@@ -69,6 +72,17 @@ public class Entity : MonoBehaviour
         //Dar overight em cada classe
         inventory.AdicionaMoeda(1);
         this.gameObject.SetActive(false);
+    }
+
+    protected void ChangeAnimationState(string newState)
+    {
+        if (newState == _currentState)
+        {
+            return;
+        }
+
+        _animator.Play(newState);
+        _currentState = newState;
     }
 
 }
