@@ -136,7 +136,8 @@ public class Enemy : Entity
         if (randomMoveTimer <= 0)
         {
             ChooseNewRandomDirection();
-        }
+        }if(hitingWall())
+            ChooseNewRandomDirection();
 
         // Mova o inimigo na direção aleatória escolhida
         transform.Translate(randomDirection * speed);
@@ -162,7 +163,6 @@ public class Enemy : Entity
 
     public IEnumerator RepeatAtack(float initialDelay, float repeatRate,float dano)
     {
-        yield return new WaitForSeconds(initialDelay);
         while (inRange == true)
         {
             damageToPlayer(dano);

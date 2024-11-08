@@ -13,6 +13,17 @@ public class Gun : MonoBehaviour
     public bool isReloading = false;
     public int maxMag = 9;
     public int currentMag = 9;
+    [SerializeField] private float time_to_reload;
+
+    // Animation
+    protected Animator _animator;
+    protected string _currentState;
+
+    // Animações
+    const string GUN_FIRE = "Gunfire";
+    const string GUN_IDLE = "IDLE";
+    const string GUN_RELOAD = "Recharge_Gun";
+
 
     // fireDelay em segundos e fireRate em fixedGameUpdates
     public float fireDelay;
@@ -27,31 +38,40 @@ public class Gun : MonoBehaviour
 
     public void Start()
     {
-        fireDelay = 0.4f;
+        _animator = gameObject.GetComponent<Animator>();
+        fireDelay = 0.6f;
         fireRate = fireDelay * 50.0f;
         reloadDelay = 1.5f;
         reloadSpeed = reloadDelay * 50.0f;
+        time_to_reload = 0.9f;
     }
 
     public void Fire()
     {
         if (canFire == true && isReloading == false && currentMag > 0)
         {
+            ChangeAnimationState(GUN_FIRE);
             GameObject bullet = Instantiate(bulletPreab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
             canFire = false;
+            StartCoroutine(ResetAnimationState());
+            currentMag--;
         }
         else if (isReloading == false && currentMag == 0)
         {
-            Reload();
+            isReloading = true;
+            ChangeAnimationState(GUN_RELOAD);
+            StartCoroutine(Reload());
         }
     }
 
-    public void Reload()
+    private IEnumerator Reload()
     {
+        yield return new WaitForSeconds(time_to_reload);
         canFire = false;
-        isReloading = true;
         fUpdateCount = 0;
+        currentMag = 9;
+        StartCoroutine(ResetAnimationState());
     }
 
     void FixedUpdate()
@@ -62,13 +82,11 @@ public class Gun : MonoBehaviour
             if (fUpdateCount < fireRate)
             {
                 fUpdateCount++;
-                Debug.Log("To no if"+ fUpdateCount+" lol  "+ fireRate);
             }
             else
             {
                 fUpdateCount = 0;
                 canFire = true;
-                Debug.Log("To no else" + fUpdateCount + " lol  " + fireRate);
             }
         }
 
@@ -87,4 +105,22 @@ public class Gun : MonoBehaviour
             }
         }
     }
+
+    protected void ChangeAnimationState(string newState)
+    {
+        if (newState == _currentState)
+        {
+            return;
+        }
+
+        _animator.Play(newState);
+        _currentState = newState;
+    }
+
+    private IEnumerator ResetAnimationState()
+    {
+        yield return new WaitForSeconds(fireDelay-0.4f); // Ajuste fireDelay ao tempo da animação
+        ChangeAnimationState(GUN_IDLE); // Retorna ao estado neutro (Idle)
+    }
+
 }

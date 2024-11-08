@@ -6,13 +6,12 @@ public class AtackCollider : MonoBehaviour
 {
     [Header("Objetos Unity")]
     public GameObject playerObject;
-    private GameObject inimigoObject;
+    [SerializeField]private GameObject inimigoObject;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            inimigoObject = transform.parent.gameObject;
             inimigoObject.GetComponent<Enemy>().state = 2;
             //Debug.Log("Entrou");
             inimigoObject.GetComponent<Enemy>().inRange = true;
