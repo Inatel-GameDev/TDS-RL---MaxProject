@@ -16,7 +16,11 @@ public class PantufasDeBandido : ItenPickup
 
     public override void Interacting()
     {
-        inventarioScr.AdicionaPantufas();
-        base.Interacting();
+        if (!alreadyInteract)
+        {
+            alreadyInteract = true;
+            inventarioScr.AdicionaPantufas();
+            base.Interacting();
+        }
     }
 }

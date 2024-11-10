@@ -10,11 +10,10 @@ public class ItenPickup : Interact
     private Player protagSRC;
     private GameObject inventarioOBJ;
     private Inventory inventarioSRC;
-
     public override void Interacting()
     {
-        atualizaStatus();
-        StartCoroutine(Destroy_it());
+            atualizaStatus();
+            StartCoroutine(Destroy_it());
     }
 
     private void atualizaStatus()

@@ -24,8 +24,12 @@ public class Macarroneide : ItenPickup
 
     public override void Interacting()
     {
-        playerSRC.aumentaVida(vidaMacarroneide);
-        inventarioScr.AdicionaMacarroneide();
-        base.Interacting();
+        if (!alreadyInteract)
+        {
+            alreadyInteract = true;
+            playerSRC.aumentaVida(vidaMacarroneide);
+            inventarioScr.AdicionaMacarroneide();
+            base.Interacting();
+        }
     }
 }

@@ -14,6 +14,11 @@ public class Gun : MonoBehaviour
     public int maxMag = 9;
     public int currentMag = 9;
     [SerializeField] private float time_to_reload;
+    public AudioSource _fire_audioSource;
+    public AudioSource _recharge_audioSource;
+    public AudioClip _rechargeClip;
+    public AudioClip _fireClip;
+
 
     // Animation
     protected Animator _animator;
@@ -53,25 +58,27 @@ public class Gun : MonoBehaviour
             ChangeAnimationState(GUN_FIRE);
             GameObject bullet = Instantiate(bulletPreab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
+            _fire_audioSource.clip = _fireClip;
+            _fire_audioSource.Play();
             canFire = false;
-            StartCoroutine(ResetAnimationState());
             currentMag--;
         }
         else if (isReloading == false && currentMag == 0)
         {
             isReloading = true;
+            canFire = false;
             ChangeAnimationState(GUN_RELOAD);
-            StartCoroutine(Reload());
         }
     }
 
-    private IEnumerator Reload()
+    private void Reload()
     {
-        yield return new WaitForSeconds(time_to_reload);
-        canFire = false;
+        _recharge_audioSource.clip = _rechargeClip;
+        _recharge_audioSource.Play();
+        isReloading = false;
         fUpdateCount = 0;
         currentMag = 9;
-        StartCoroutine(ResetAnimationState());
+        ResetAnimationState();
     }
 
     void FixedUpdate()
@@ -117,9 +124,8 @@ public class Gun : MonoBehaviour
         _currentState = newState;
     }
 
-    private IEnumerator ResetAnimationState()
+    public void ResetAnimationState()
     {
-        yield return new WaitForSeconds(fireDelay-0.4f); // Ajuste fireDelay ao tempo da animação
         ChangeAnimationState(GUN_IDLE); // Retorna ao estado neutro (Idle)
     }
 

@@ -16,7 +16,11 @@ public class LuzdeRetorno : ItenPickup
 
     public override void Interacting()
     {
-        inventarioScr.AdicionaDesfibrilador();
-        base.Interacting();
+        if (!alreadyInteract)
+        {
+            alreadyInteract = true;
+            inventarioScr.AdicionaDesfibrilador();
+            base.Interacting();
+        }
     }
 }

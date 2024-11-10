@@ -5,7 +5,7 @@ using static UnityEditor.ShaderData;
 
 public abstract class Interact : MonoBehaviour
 {
-    protected bool inRange = false;
+    [SerializeField]protected bool inRange = false;
     public bool alreadyInteract = false;
     [SerializeField] private SpriteRenderer spriteRenderer;
     protected bool its_destroying = false;

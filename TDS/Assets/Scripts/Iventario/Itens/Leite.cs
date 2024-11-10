@@ -22,8 +22,12 @@ public class Leite : ItenPickup
 
     public override void Interacting()
     {
-        inventarioScr.AdicionaLeite();
-        playerSRC.aumentaShield(shieldLeite*inventarioScr.leite);
-        base.Interacting();
+        if (!alreadyInteract)
+        {
+            alreadyInteract = true;
+            inventarioScr.AdicionaLeite();
+            playerSRC.aumentaShield(shieldLeite * inventarioScr.leite);
+            base.Interacting();
+        }
     }
 }

@@ -16,7 +16,11 @@ public class AVUP : ItenPickup
 
     public override void Interacting()
     {
-        inventarioScr.AdicionaTufé();
-        base.Interacting();
+        if (!alreadyInteract)
+        {
+            alreadyInteract = true;
+            inventarioScr.AdicionaTufé();
+            base.Interacting();
+        }
     }
 }

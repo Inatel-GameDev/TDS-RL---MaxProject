@@ -25,7 +25,6 @@ public class AtackCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            inimigoObject = transform.parent.gameObject;
             //inimigoObject.GetComponent<Enemy>().state = 0; // Não ta funcionando
             inimigoObject.GetComponent<Enemy>().inRange = false;
             //Debug.Log("saiu");

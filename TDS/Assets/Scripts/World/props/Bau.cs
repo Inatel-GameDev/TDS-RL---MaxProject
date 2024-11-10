@@ -16,6 +16,8 @@ public class Bau : Interact
     private int _legendary_iten_picked;
     protected Animator _animator;
     protected string _currentState;
+    public AudioSource _open_chest_audioSource;
+    public AudioClip _audioClip;
 
     // Animações
     const string CHEST_SPAWN = "ChestSpawn";
@@ -29,6 +31,9 @@ public class Bau : Interact
 
     public override void Interacting()
     {
+        _open_chest_audioSource.clip = _audioClip;
+        _open_chest_audioSource.Play();
+        
         its_destroying = true;
         _iten_raritity = Random.Range(0, 100);
         _comon_iten_picked = Random.Range(0, comom_intens.Length);

@@ -27,10 +27,16 @@ public class Sword : MonoBehaviour
     }
     protected void damageToPlayer(float dano)
     {
-        if(esqueleto_src.inRange)
-            playerObj = GameObject.FindWithTag("Player");
-            playerScr = playerObj.GetComponent<Player>();
-            playerScr.ReduzirVida(esqueleto_src.danoBase);
+        if (esqueleto_src != null)
+        {
+            if (esqueleto_src.inRange)
+            {
+                playerObj = GameObject.FindWithTag("Player");
+                playerScr = playerObj.GetComponent<Player>();
+                if(playerScr != null) 
+                    playerScr.ReduzirVida(esqueleto_src.danoBase);
+            }
+        }
     }
     protected void ChangeAnimationState(string newState)
     {
