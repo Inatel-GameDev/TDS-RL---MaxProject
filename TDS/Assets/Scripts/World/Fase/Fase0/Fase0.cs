@@ -15,7 +15,8 @@ public class Fase0 : Fase
     [SerializeField]private Text bem_vindo_as_cavernas; // arraste o componente Text do Canvas aqui no Inspector
     [SerializeField]private GameObject mob_spawn;
     [SerializeField]private MinionsSpawn mob_spawn_src;
-    [SerializeField] private GameObject porta;
+    [SerializeField]private GameObject porta;
+    [SerializeField]private GameObject spawnDeBaus;
     private bool siga_em_frente;
     void Start()
     {
@@ -38,10 +39,11 @@ public class Fase0 : Fase
 
         if (mob_spawn_src.all_enemys_invoked && inimigos_em_cena.Length == 0)
         {
-            // permite sair
-            porta.SetActive(true);
+            // permite sair e coloca baús
             if (siga_em_frente == false)
             {
+                spawnDeBaus.SetActive(true);
+                porta.SetActive(true);
                 StartCoroutine(ShowTextOneByOne("Siga em frente"));
                 siga_em_frente=true;
             }

@@ -16,7 +16,7 @@ public class ChestSpawner : MonoBehaviour
     public int bauMax;
     // Mínimo de baús a seres spawnados.
     public int bauMin;
-    // Número de spawnpoints de baú na cena
+   
 
     // Quantos baús devem ser spawnados, deixe um número negativo para randomizar entre mínimo e máximo.
     public int bauTotal;
@@ -96,7 +96,7 @@ public class ChestSpawner : MonoBehaviour
     }
 
     /* Update foi comentado para usos futuros.
-    void Update()
+    void Update()s
     {
         
     }*/
