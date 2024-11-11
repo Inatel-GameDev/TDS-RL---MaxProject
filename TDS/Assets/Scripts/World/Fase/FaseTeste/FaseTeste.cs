@@ -1,51 +1,35 @@
 using System.Collections;
-//using System.Collections.Generic;
-//using System.Runtime.CompilerServices;
-//using Unity.VisualScripting;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-//using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
-//using static UnityEditor.ShaderData;
-//
-// Fazer herança que pegue um script comum fase que tenha o basico de tudo pra poder fazer o minion Spawn pegra a herança
 
-
-public class Fase0 : Fase
+public class FaseTeste : Fase
 {
-    [SerializeField]private Text bem_vindo_as_cavernas; // arraste o componente Text do Canvas aqui no Inspector
-    [SerializeField]private GameObject mob_spawn;
-    [SerializeField]private MinionsSpawn mob_spawn_src;
-    [SerializeField]private GameObject porta;
-    [SerializeField]private GameObject spawnDeBaus;
-    private bool siga_em_frente;
+    [SerializeField] private Text bem_vindo_as_cavernas;
+    [SerializeField] private GameObject mob_spawn;
+    [SerializeField] private MinionsSpawn mob_spawn_src;
+    [SerializeField] private ChestSpawner bau_spawn_src;
     void Start()
     {
-        max_enemys_easy = 6f;
-        max_enemys_medium = 9f;
-        max_enemys_hard = 12f;
-        numWaves = 3f;
+        max_enemys_easy = 2f;
+        max_enemys_medium = 2f;
+        max_enemys_hard = 2f;
+        numWaves = 999999999999999999f;
         mob_spawn_src = mob_spawn.GetComponent<MinionsSpawn>();
-        siga_em_frente = false;
-        StartCoroutine(ShowTextOneByOne("Bem Vindo as Cavernas"));
-        StartCoroutine(Turn_On_Spawns());
+        StartCoroutine(ShowTextOneByOne("Bem vindo ao mundo de teste"));
     }
 
     private void Update()
     {
-        GameObject[] inimigos_em_cena = GameObject.FindGameObjectsWithTag("Enemy");
 
-        
-
-        if (mob_spawn_src.all_enemys_invoked && inimigos_em_cena.Length == 0)
+        if (bau_spawn_src.getBauCount() == 0)
         {
-            // permite sair e coloca baús
-            if (siga_em_frente == false)
+            foreach (GameObject spawn in bau_spawn_src.bauSpawnpointObjects)
             {
-                spawnDeBaus.SetActive(true);
-                porta.SetActive(true);
-                StartCoroutine(ShowTextOneByOne("Siga em frente"));
-                siga_em_frente=true;
+                spawn.SetActive(true);
             }
+            bau_spawn_src.spawn();
         }
     }
 
@@ -81,12 +65,7 @@ public class Fase0 : Fase
             yield return new WaitForSeconds(0.1f);
         }
         bem_vindo_as_cavernas.gameObject.SetActive(false);
-    }
-
-    private IEnumerator Turn_On_Spawns()
-    {
-        yield return new WaitForSeconds(1.6f);
-        mob_spawn.SetActive(true);
+        StartCoroutine(ShowTextOneByOne("Para sair do jogo Morra"));
     }
 
 }

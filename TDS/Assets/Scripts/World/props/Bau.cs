@@ -18,15 +18,19 @@ public class Bau : Interact
     protected string _currentState;
     public AudioSource _open_chest_audioSource;
     public AudioClip _audioClip;
+    [SerializeField] private ChestSpawner bau_spawn_src;
 
     // Animações
     const string CHEST_SPAWN = "ChestSpawn";
     const string CHEST_OPEN = "ChestOpen";
 
+    
+
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
         ChangeAnimationState(CHEST_SPAWN);
+        bau_spawn_src = GameObject.Find("ChestSpawnpoints").GetComponent<ChestSpawner>();
     }
 
     public override void Interacting()
@@ -44,6 +48,8 @@ public class Bau : Interact
         _iten_raritity = 50;
 
         ChangeAnimationState(CHEST_OPEN);
+
+        bau_spawn_src.setBauCount(bau_spawn_src.getBauCount()-1);
 
         if (_iten_raritity<=70)
         {

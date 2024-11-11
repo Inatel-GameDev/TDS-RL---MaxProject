@@ -67,7 +67,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    protected void morrer()
+    virtual protected void morrer()
     {
         //Dar overight em cada classe
         inventory.AdicionaMoeda(1);

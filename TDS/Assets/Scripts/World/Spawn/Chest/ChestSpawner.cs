@@ -6,7 +6,7 @@ public class ChestSpawner : MonoBehaviour
 {
 
     // Serve para instanciar baús
-    [SerializeField] private GameObject[] bauSpawnpointObjects;
+    [SerializeField] public GameObject[] bauSpawnpointObjects;
 
     [Header("Objeto Unity")]
     public GameObject bauObject;
@@ -44,10 +44,10 @@ public class ChestSpawner : MonoBehaviour
     void Start()
     {
         bauSpawnpointCount = bauSpawnpointObjects.Length;
-        Spawn();
+        spawn();
     }
 
-    public void Spawn()
+    public void spawn()
     {
         // Checa se o valor de baús procurado é valido, se não for, gera um valor adequado
         if (bauTotal < 0)

@@ -15,7 +15,8 @@ public class MinionsSpawn : MonoBehaviour
     private float numWaves;
     private int wavesCont = 0;
     private Fase fase;
-    private Fase0 fase0; // Referência para o script Fase0
+    private Fase0 fase0;
+    private FaseTeste faseteste;// Referência para o script Fase0
     private GameManager game;
     private List<int> spawns = new List<int>();
     float maxEnemyes;
@@ -27,11 +28,23 @@ public class MinionsSpawn : MonoBehaviour
         all_enemys_invoked = false;
         timeToSpawn = 8f;
         game = GameObject.Find("Game_Manager").GetComponent<GameManager>();
-
+        GameObject gameManagerObject = GameObject.Find("Game_Manager");
+        if (gameManagerObject != null)
+        {
+            game = gameManagerObject.GetComponent<GameManager>();
+        }
+        else
+        {
+            Debug.LogError("Game_Manager object not found in the scene.");
+            return;  // Opcionalmente, encerre o método se `game` for essencial
+        }
         // Ajusta o componente `Fase` de acordo com a fase atual
         if (game.fase == "Fase0")
         {
             fase = GameObject.Find("Fase").GetComponent<Fase0>(); // Acessa Fase0
+        }if (game.fase == "FaseTeste")
+        {
+            fase = GameObject.Find("Fase").GetComponent<FaseTeste>(); // Acessa Fase0
         }
         //else if (game.fase == "Fase1")
         //{

@@ -13,4 +13,10 @@ public class Player : Entity
     //float danoBase
     public float iaHelperSize;
 
+    override protected void morrer()
+    {
+        base.morrer();
+        Application.Quit();
+    }
+
 }

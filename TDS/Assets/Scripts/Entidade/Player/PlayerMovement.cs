@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
+//using System.Collections;
+//using System.Collections.Generic;
+//using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : Player
@@ -69,6 +68,7 @@ public class PlayerMovement : Player
 
         m_Position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+    
 
     private void FixedUpdate()
     {
