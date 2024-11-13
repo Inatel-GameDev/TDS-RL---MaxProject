@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393323649871796105}
   - component: {fileID: 3132741897417529588}
+  - component: {fileID: 297171660726262627}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -44,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c54ba81a84ef7fe45a3b15f8ee920323, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.04
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -128,3 +129,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &297171660726262627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482820377997049150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69924ed2a5902f043894e02e3130b95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fase: Fase0
+  dificuldade: 1

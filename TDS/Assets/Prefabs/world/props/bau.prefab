@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ad45fb795421e41a8eea890af77482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inRange: 0
   alreadyInteract: 0
   spriteRenderer: {fileID: 778055750303306048}
   comom_intens:
@@ -157,6 +158,7 @@ MonoBehaviour:
   legendary_intens: []
   _open_chest_audioSource: {fileID: 1549570058186552887}
   _audioClip: {fileID: 8300000, guid: aec92a747b7b4374ba800a896ee841f5, type: 3}
+  bau_spawn_src: {fileID: 0}
 --- !u!95 &6991410250452831233
 Animator:
   serializedVersion: 5
@@ -190,7 +192,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aec92a747b7b4374ba800a896ee841f5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

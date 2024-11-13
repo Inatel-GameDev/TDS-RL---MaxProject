@@ -15590,25 +15590,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
---- !u!1 &704938795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 482820377997049150, guid: 067063c87dca3f848b161bce74da0824, type: 3}
-  m_PrefabInstance: {fileID: 2385303938661327352}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &704938798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704938795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69924ed2a5902f043894e02e3130b95c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fase: Fase0
-  dificuldade: 1
 --- !u!1 &762814860
 GameObject:
   m_ObjectHideFlags: 0
@@ -29663,7 +29644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2799990476694577797, guid: e3d7478a6fa07d841b328731e4ba4860, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6619392886715228482, guid: e3d7478a6fa07d841b328731e4ba4860, type: 3}
       propertyPath: m_Camera
@@ -29770,10 +29751,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 482820377997049150, guid: 067063c87dca3f848b161bce74da0824, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 704938798}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 067063c87dca3f848b161bce74da0824, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
