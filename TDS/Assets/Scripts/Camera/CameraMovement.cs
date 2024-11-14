@@ -7,6 +7,10 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] GameObject player;
 
     // Update is called once per frame
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     void Update()
     {
         transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10);

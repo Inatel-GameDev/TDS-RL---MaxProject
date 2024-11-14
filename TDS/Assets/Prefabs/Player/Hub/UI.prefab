@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6619392886715228482}
   - component: {fileID: 1369947756879829081}
   - component: {fileID: 4340674475679021060}
-  - component: {fileID: 1961987138430016326}
   - component: {fileID: 2128619988741134583}
   m_Layer: 5
   m_Name: Canvas
@@ -109,27 +108,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &1961987138430016326
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238416656050567817}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bd1c9bafce7fbdf4991c2a916e8d9139, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &2128619988741134583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -555,7 +533,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0808625, y: 0.15315449, z: 494.7645}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.28571427, y: 0.28571427, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1134544132899125738}
