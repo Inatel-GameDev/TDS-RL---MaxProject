@@ -1,6 +1,8 @@
 //using System.Collections;
 //using System.Collections.Generic;
 //using Unity.VisualScripting;
+using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMovement : Player
@@ -11,6 +13,11 @@ public class PlayerMovement : Player
 
     [Header("Variáveis")]
     Vector2 m_Position;
+    bool canDash = true;
+    bool isDashing = false;
+    float tempoDash = 0.2f;
+    float poderDash = 2.5f;
+    float cooldownDash = 1f;
 
     //Constantes animação
     const string PLAYER_IDLE = "PlayerIdle";
@@ -19,6 +26,7 @@ public class PlayerMovement : Player
     const string PLAYER_FALL = "Player_Fall";
     const string PLAYER_DAMAGE = "Player_damage";
     const string PLAYER_ATTACK = "Player_Attack";
+
 
     private void Start()
     {
@@ -38,29 +46,34 @@ public class PlayerMovement : Player
 
     private void Update()
     {
-
-        moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
-        moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
-
-        if (vida <= 0)
-            logicaVida();
-
-        switch (state)
+        if (!isDashing)
         {
-            case 0://IDLE
-                if (moveHorizontal != 0 || moveVertical != 0)
-                    state = 1;
-                ChangeAnimationState(PLAYER_IDLE);
-                break;
-            case 1://WALKING ON GROUND
-                ChangeAnimationState(PLAYER_RUN);
+            moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
+            moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
 
-                break;
-            case 2:
-                //tanking damage
-                break;
+            if (Input.GetKeyDown(KeyCode.Q) && canDash == true)
+            {
+                StartCoroutine(Dash());
+            }
         }
+            if (vida <= 0)
+                logicaVida();
 
+            switch (state)
+            {
+                case 0://IDLE
+                    if (moveHorizontal != 0 || moveVertical != 0)
+                        state = 1;
+                    ChangeAnimationState(PLAYER_IDLE);
+                    break;
+                case 1://WALKING ON GROUND
+                    ChangeAnimationState(PLAYER_RUN);
+
+                    break;
+                case 2:
+                    //tanking damage
+                    break;
+            }
         if (Input.GetMouseButton(0))
         {
             gun.Fire();
@@ -148,5 +161,15 @@ public class PlayerMovement : Player
         return moveHorizontal+moveVertical;
     }
 
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        centerRb.velocity = new Vector2 (transform.localScale.x * poderDash, transform.localScale.y * poderDash);
+        yield return new WaitForSeconds(tempoDash);
+        isDashing = false;
+        yield return new WaitForSeconds(cooldownDash);
+        canDash = true;
+    }
 
 }
