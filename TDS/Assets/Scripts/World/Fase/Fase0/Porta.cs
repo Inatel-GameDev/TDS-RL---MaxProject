@@ -7,6 +7,6 @@ public class Porta : Interact
 {
     public override void Interacting()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
