@@ -13,11 +13,13 @@ public class PlayerMovement : Player
 
     [Header("Variáveis")]
     Vector2 m_Position;
-    bool canDash = true;
-    bool isDashing = false;
-    float tempoDash = 0.2f;
-    float poderDash = 2.5f;
-    float cooldownDash = 1f;
+    private bool canDash = true;
+    private bool isDashing = false;
+
+    [Header("Dash")]
+    public float tempoDash = 1f;
+    public float poderDash = 3f;
+    public float cooldownDash = 5f;
 
     //Constantes animação
     const string PLAYER_IDLE = "PlayerIdle";
@@ -46,6 +48,7 @@ public class PlayerMovement : Player
 
     private void Update()
     {
+
         if (!isDashing)
         {
             moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
@@ -54,6 +57,10 @@ public class PlayerMovement : Player
             if (Input.GetKeyDown(KeyCode.Q) && canDash == true)
             {
                 StartCoroutine(Dash());
+            }
+            if (Input.GetMouseButton(0))
+            {
+                gun.Fire();
             }
         }
             if (vida <= 0)
@@ -74,10 +81,6 @@ public class PlayerMovement : Player
                     //tanking damage
                     break;
             }
-        if (Input.GetMouseButton(0))
-        {
-            gun.Fire();
-        }
 
         m_Position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -154,8 +157,16 @@ public class PlayerMovement : Player
 
     private float groundMovement()
     {
-        position.x = rb.position.x + moveHorizontal * speed;
-        position.y = rb.position.y + moveVertical * speed;
+        if (!isDashing)
+        {
+            position.x = rb.position.x + moveHorizontal * speed;
+            position.y = rb.position.y + moveVertical * speed;
+        }
+        else
+        {
+            position.x = rb.position.x + (moveHorizontal * speed * poderDash);
+            position.y = rb.position.y + (moveVertical * speed * poderDash);
+        }
 
         rb.position = position;
         return moveHorizontal+moveVertical;
@@ -165,7 +176,6 @@ public class PlayerMovement : Player
     {
         canDash = false;
         isDashing = true;
-        centerRb.velocity = new Vector2 (transform.localScale.x * poderDash, transform.localScale.y * poderDash);
         yield return new WaitForSeconds(tempoDash);
         isDashing = false;
         yield return new WaitForSeconds(cooldownDash);
