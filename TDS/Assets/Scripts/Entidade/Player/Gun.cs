@@ -32,7 +32,6 @@ public class Gun : MonoBehaviour
 
     // fireDelay em segundos e fireRate em fixedGameUpdates
     public float fireDelay;
-    private float fireRate;
 
     // Enquanto não houver animaçõesS
     public float reloadDelay;
@@ -45,7 +44,6 @@ public class Gun : MonoBehaviour
     {
         _animator = gameObject.GetComponent<Animator>();
         fireDelay = 0.6f;
-        fireRate = fireDelay * 50.0f;
         reloadDelay = 1.5f;
         reloadSpeed = reloadDelay * 50.0f;
         time_to_reload = 0.9f;
@@ -60,7 +58,7 @@ public class Gun : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
             _fire_audioSource.clip = _fireClip;
             _fire_audioSource.Play();
-            canFire = false;
+            StartCoroutine(FireRate());
             currentMag--;
         }
         else if (isReloading == false && currentMag == 0)
@@ -83,22 +81,8 @@ public class Gun : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Implementação da fire rate
-        if (canFire == false && isReloading == false)
-        {
-            if (fUpdateCount < fireRate)
-            {
-                fUpdateCount++;
-            }
-            else
-            {
-                fUpdateCount = 0;
-                canFire = true;
-            }
-        }
-
         // Implemetação temporária do reload
-        else if (canFire == false && isReloading == true)
+        if (canFire == false && isReloading == true)
         {
             if (fUpdateCount < reloadSpeed)
             {
@@ -111,6 +95,13 @@ public class Gun : MonoBehaviour
                 isReloading = false;
             }
         }
+    }
+
+    private IEnumerator FireRate()
+    {
+        canFire = false;
+        yield return new WaitForSeconds(fireDelay);
+        canFire = true;
     }
 
     protected void ChangeAnimationState(string newState)
