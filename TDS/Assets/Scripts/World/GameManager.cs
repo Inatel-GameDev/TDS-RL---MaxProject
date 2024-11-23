@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameDificult dificuldade;
     public string fase;
     [SerializeField] UI_Itens itensUI;
-    private bool itens_menu_open = false;
+    private bool itens_menu_open;
     public enum GameDificult
     {
         easy = 0,
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        itens_menu_open = true;
         paused = false;
         // game = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         itensUI = GameObject.Find("UI_ITEN").GetComponent<UI_Itens>();

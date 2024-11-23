@@ -11,15 +11,15 @@ public class Inventory : MonoBehaviour
     [SerializeField] public int macarroneide;
     [SerializeField] public int desfibrilador;
     [SerializeField] public int fibrilador;
-    [SerializeField] public string[] itens_name;
+    public string[] itens_name;
 
     private void Start()
     {
-        string[] itens_name = new string[]
+        itens_name = new string[]
         {
             "Desfibrilador",
             "Leite",
-            "Macarrones",
+            "Macarroneide",
             "PantufasDeBandido",
             "Tufé"
         };

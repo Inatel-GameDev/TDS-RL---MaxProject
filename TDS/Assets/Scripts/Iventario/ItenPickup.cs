@@ -39,7 +39,6 @@ public class ItenPickup : Interact
         protagSRC.iaHelperSize = playerIAhelperSize;
         protagSRC.speed = playerSpeed;
         protagSRC.shieldTotal = shield;
-
         itensUI.sapawn_iten_image(inventarioSRC.itens_name);
 
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8817596606378999223}
   - component: {fileID: 5855749274372450314}
   m_Layer: 0
-  m_Name: Desfribilador
+  m_Name: Desfibrilador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a162df2ae922b4692152262eb5794f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inRange: 0
   alreadyInteract: 0
   spriteRenderer: {fileID: 6997738592276567222}
 --- !u!58 &5855749274372450314

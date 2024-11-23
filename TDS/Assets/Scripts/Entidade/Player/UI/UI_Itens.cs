@@ -12,11 +12,13 @@ public class UI_Itens : MonoBehaviour
     public float scaleSpeed = 2f; // Velocidade da transição de escala
     private Coroutine currentCoroutine; // Para interromper corrotinas em execução
     [Header("Itens")]
+    [SerializeField] private GameObject act;
     [SerializeField] private GameObject[] image_itens;
-    private float distH_inicial = 64f;
-    private float distV_inicial = -55;
-    private float distH_iten_iten = 130f;
-    private float distV_iten_iten = -55;
+    private float distH_inicial;//64
+    private float distV_inicial;
+    private float distH_iten_iten = 180;
+    private float distV_iten_iten = -80;
+    private float cont_iten = 0;
 
     private void Start()
     {
@@ -25,6 +27,8 @@ public class UI_Itens : MonoBehaviour
             item_interface.SetActive(false); // Certifique-se de que o objeto começa desativado
             initialScale = item_interface.transform.localScale;
         }
+        distH_inicial = 33f / 40f;
+        distV_inicial = -50f / 45f;
     }
 
     public void ActivateAndScaleUp()
@@ -61,24 +65,49 @@ public class UI_Itens : MonoBehaviour
         onComplete?.Invoke(); // Executa o callback, se existir
     }
 
-    public void sapawn_iten_image(string[] itens_name) 
+    public void sapawn_iten_image(string[] itens_name)
     {
-        foreach(string iten in itens_name)
+        GameObject instanciate_iten;
+
+        int itensPorLinha = 3; // Quantidade de itens por linha
+
+        foreach (string iten in itens_name)
         {
             foreach (GameObject image in image_itens)
             {
                 string nome_atual = image.name;
-                if (nome_atual == iten)
+                Transform filho = act.transform.Find(nome_atual+ "(Clone)");
+                if (nome_atual == iten && filho == null)
                 {
-                    GameObject instanciate_iten = Instantiate(image.gameObject, 
-                       new Vector3( (item_interface.transform.position.x+distH_inicial),
-                       item_interface.transform.position.x + distV_inicial, 
-                       item_interface.transform.position.z),
-                       item_interface.transform.rotation);
+                    // Calcula a posição do item
+                    Vector3 posicao = new Vector3(
+                        act.transform.position.x + distH_inicial,
+                        act.transform.position.y + distV_inicial,
+                        act.transform.position.z
+                    );
+
+                    // Instancia o item
+                    instanciate_iten = Instantiate(image, posicao, act.transform.rotation);
+                    instanciate_iten.transform.SetParent(act.transform, true);
                     instanciate_iten.layer = 11;
+
+                    // Atualiza o contador de itens e ajusta as posições
+                    cont_iten++;
+                    if (cont_iten % (itensPorLinha) == 0)
+                    {
+                        // Muda para a próxima linha
+                        distH_inicial = 33f / 45f; // Reseta a posição horizontal
+                        distV_inicial += distV_iten_iten/45f; // Move para a linha de baixo
+                    }
+                    else
+                    {
+                        // Incrementa a posição horizontal
+                        distH_inicial += distH_iten_iten/45f;
+                    }
                 }
             }
         }
     }
+
 
 }
