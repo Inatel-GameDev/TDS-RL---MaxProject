@@ -12,13 +12,16 @@ public class UI_Itens : MonoBehaviour
     public float scaleSpeed = 2f; // Velocidade da transição de escala
     private Coroutine currentCoroutine; // Para interromper corrotinas em execução
     [Header("Itens")]
+    [SerializeField] private GameObject item_storage;
     [SerializeField] private GameObject act;
     [SerializeField] private GameObject[] image_itens;
+    private List<GameObject> instantiatedItems = new List<GameObject>();
     private float distH_inicial;//64
     private float distV_inicial;
     private float distH_iten_iten = 180;
     private float distV_iten_iten = -80;
     private float cont_iten = 0;
+    [SerializeField]public float delayBetweenDeactivations;
 
     private void Start()
     {
@@ -33,29 +36,31 @@ public class UI_Itens : MonoBehaviour
 
     public void ActivateAndScaleUp()
     {
+        StartActivation();
         item_interface_off.SetActive(false);
         if (currentCoroutine != null) StopCoroutine(currentCoroutine); // Interrompe corrotinas anteriores
         item_interface.SetActive(true); // Ativa o objeto
-        currentCoroutine = StartCoroutine(ScaleObject(item_interface, initialScale, targetScale));
+        currentCoroutine = StartCoroutine(ScaleObject(item_interface, initialScale, targetScale, scaleSpeed));
     }
 
     public void ScaleDownAndDeactivate()
     {
+        StartDeactivation();
         if (currentCoroutine != null) StopCoroutine(currentCoroutine); // Interrompe corrotinas anteriores
-        currentCoroutine = StartCoroutine(ScaleObject(item_interface, item_interface.transform.localScale, Vector2.zero, () =>
+        currentCoroutine = StartCoroutine(ScaleObject(item_interface, item_interface.transform.localScale, Vector2.zero, scaleSpeed-0.9f, () =>
         {
             item_interface.SetActive(false); // Desativa o objeto após reduzir a escala
         }));
         item_interface_off.SetActive(true) ;
     }
 
-    private IEnumerator ScaleObject(GameObject obj, Vector2 fromScale, Vector2 toScale, System.Action onComplete = null)
+    private IEnumerator ScaleObject(GameObject obj, Vector2 fromScale, Vector2 toScale,float speed, System.Action onComplete = null)
     {
         float progress = 0f;
 
         while (progress <= 1f)
         {
-            progress += Time.deltaTime * scaleSpeed;
+            progress += Time.deltaTime * speed;
             Vector2 newScale = Vector2.Lerp(fromScale, toScale, progress);
             obj.transform.localScale = new Vector3(newScale.x, newScale.y, obj.transform.localScale.z); // Preserva o eixo Z
             yield return null; // Aguarda o próximo frame
@@ -76,20 +81,21 @@ public class UI_Itens : MonoBehaviour
             foreach (GameObject image in image_itens)
             {
                 string nome_atual = image.name;
-                Transform filho = act.transform.Find(nome_atual+ "(Clone)");
+                Transform filho = item_storage.transform.Find(nome_atual+ "(Clone)");
                 if (nome_atual == iten && filho == null)
                 {
                     // Calcula a posição do item
                     Vector3 posicao = new Vector3(
-                        act.transform.position.x + distH_inicial,
-                        act.transform.position.y + distV_inicial,
-                        act.transform.position.z
+                        item_storage.transform.position.x + distH_inicial,
+                        item_storage.transform.position.y + distV_inicial,
+                        item_storage.transform.position.z
                     );
 
                     // Instancia o item
-                    instanciate_iten = Instantiate(image, posicao, act.transform.rotation);
-                    instanciate_iten.transform.SetParent(act.transform, true);
-                    instanciate_iten.layer = 11;
+                    // instanciate_iten = Instantiate(image, posicao, item_storage.transform.rotation);
+                    CreateItem(posicao, image);
+                    //instanciate_iten.transform.SetParent(item_storage.transform, true);
+                    //instanciate_iten.layer = 11;
 
                     // Atualiza o contador de itens e ajusta as posições
                     cont_iten++;
@@ -107,7 +113,72 @@ public class UI_Itens : MonoBehaviour
                 }
             }
         }
+        if (!act.activeSelf)
+            DeactivateAllItems();
     }
 
+    public void CreateItem(Vector3 position, GameObject image)
+    {
+        // Instanciar o item
+        GameObject instanciateItem = Instantiate(image, position, item_storage.transform.rotation);
+
+        // Definir o pai e a camada
+        instanciateItem.transform.SetParent(item_storage.transform, true);
+        instanciateItem.layer = 11;
+
+        // Adicionar à lista
+        instantiatedItems.Add(instanciateItem);
+    }
+
+    public void StartDeactivation()
+    {
+        // Iniciar a desativação dos itens
+        StartCoroutine(DeactivateItemsFromEnd());
+    }
+
+    private IEnumerator DeactivateItemsFromEnd()
+    {
+        // Iterar de maior índice para menor
+        for (int i = instantiatedItems.Count - 1; i >= 0; i--)
+        {
+            if (instantiatedItems[i] != null)
+            {
+                // Desativar o item
+                instantiatedItems[i].SetActive(false);
+                yield return new WaitForSeconds(delayBetweenDeactivations-0.02f); // Esperar antes de desativar o próximo
+            }
+        }
+    }
+
+    public void StartActivation()
+    {
+        // Iniciar a desativação dos itens
+        StartCoroutine(ActivateItemsFromStart());
+    }
+    private IEnumerator ActivateItemsFromStart()
+    {
+        // Iterar de maior índice para menor
+        for (int i = 0; instantiatedItems.Count > i; i++)
+        {
+            if (instantiatedItems[i] != null)
+            {
+                // Desativar o item
+                instantiatedItems[i].SetActive(true);
+                yield return new WaitForSeconds(delayBetweenDeactivations+0.15f); // Esperar antes de desativar o próximo
+            }
+        }
+    }
+
+    public void DeactivateAllItems()
+    {
+        // Iterar pela lista do maior índice para o menor
+        for (int i = instantiatedItems.Count - 1; i >= 0; i--)
+        {
+            if (instantiatedItems[i] != null)
+            {
+                instantiatedItems[i].SetActive(false); // Desativar o item
+            }
+        }
+    }
 
 }
