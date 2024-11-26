@@ -15,13 +15,16 @@ public class UI_Itens : MonoBehaviour
     [SerializeField] private GameObject item_storage;
     [SerializeField] private GameObject act;
     [SerializeField] private GameObject[] image_itens;
-    private List<GameObject> instantiatedItems = new List<GameObject>();
+    public List<GameObject> instantiatedItems = new List<GameObject>();
     private float distH_inicial;//64
     private float distV_inicial;
     private float distH_iten_iten = 180;
     private float distV_iten_iten = -80;
     private float cont_iten = 0;
     [SerializeField]public float delayBetweenDeactivations;
+    [SerializeField] private float time_to_intes_desapear;
+    [SerializeField] private float time_to_intes_apear;
+    public bool is_spawning = false;
 
     private void Start()
     {
@@ -47,7 +50,7 @@ public class UI_Itens : MonoBehaviour
     {
         StartDeactivation();
         if (currentCoroutine != null) StopCoroutine(currentCoroutine); // Interrompe corrotinas anteriores
-        currentCoroutine = StartCoroutine(ScaleObject(item_interface, item_interface.transform.localScale, Vector2.zero, scaleSpeed-0.9f, () =>
+        currentCoroutine = StartCoroutine(ScaleObject(item_interface, item_interface.transform.localScale, Vector2.zero, scaleSpeed, () =>
         {
             item_interface.SetActive(false); // Desativa o objeto após reduzir a escala
         }));
@@ -73,7 +76,6 @@ public class UI_Itens : MonoBehaviour
     public void sapawn_iten_image(string[] itens_name)
     {
         GameObject instanciate_iten;
-
         int itensPorLinha = 3; // Quantidade de itens por linha
 
         foreach (string iten in itens_name)
@@ -145,13 +147,16 @@ public class UI_Itens : MonoBehaviour
             {
                 // Desativar o item
                 instantiatedItems[i].SetActive(false);
-                yield return new WaitForSeconds(delayBetweenDeactivations-0.02f); // Esperar antes de desativar o próximo
+                yield return new WaitForSeconds(time_to_intes_desapear); // Esperar antes de desativar o próximo
             }
         }
+        is_spawning = false;
     }
 
     public void StartActivation()
     {
+        if (instantiatedItems.Count > 0)
+            is_spawning = true;
         // Iniciar a desativação dos itens
         StartCoroutine(ActivateItemsFromStart());
     }
@@ -164,9 +169,11 @@ public class UI_Itens : MonoBehaviour
             {
                 // Desativar o item
                 instantiatedItems[i].SetActive(true);
-                yield return new WaitForSeconds(delayBetweenDeactivations+0.15f); // Esperar antes de desativar o próximo
+                yield return new WaitForSeconds(time_to_intes_apear); // Esperar antes de desativar o próximo
+                
             }
         }
+        is_spawning = false;
     }
 
     public void DeactivateAllItems()

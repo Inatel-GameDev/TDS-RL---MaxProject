@@ -33,13 +33,17 @@ public class GameManager : MonoBehaviour
             paused = !paused;
             pause(paused);
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !itensUI.is_spawning)
         {
             itens_menu_open = !itens_menu_open;
-            if (itens_menu_open)
-                itensUI.ScaleDownAndDeactivate();
-            else
+            if (!itensUI.is_spawning && !itens_menu_open)
+            {
                 itensUI.ActivateAndScaleUp();
+            }
+            else if (!itensUI.is_spawning && itens_menu_open)
+            {
+                itensUI.ScaleDownAndDeactivate();
+            }
         }
     }
 
