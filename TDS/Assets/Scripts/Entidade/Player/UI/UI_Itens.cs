@@ -162,6 +162,7 @@ public class UI_Itens : MonoBehaviour
     }
     private IEnumerator ActivateItemsFromStart()
     {
+        float time_aux = time_to_intes_apear;
         // Iterar de maior índice para menor
         for (int i = 0; instantiatedItems.Count > i; i++)
         {
@@ -169,7 +170,12 @@ public class UI_Itens : MonoBehaviour
             {
                 // Desativar o item
                 instantiatedItems[i].SetActive(true);
-                yield return new WaitForSeconds(time_to_intes_apear); // Esperar antes de desativar o próximo
+                yield return new WaitForSeconds(time_aux); // Esperar antes de desativar o próximo
+                Debug.Log(time_aux);
+                if (time_aux > 0) 
+                    time_aux = time_aux - 0.015f;
+                else
+                    time_aux = 0;
                 
             }
         }
