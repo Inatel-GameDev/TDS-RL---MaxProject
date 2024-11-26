@@ -66218,7 +66218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869587854161665189, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: time_to_intes_desapear
-      value: 0.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1869587854161665189, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: delayBetweenDeactivations
