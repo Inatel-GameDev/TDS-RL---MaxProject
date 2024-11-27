@@ -58,8 +58,8 @@ public class Gun : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
             _fire_audioSource.clip = _fireClip;
             _fire_audioSource.Play();
-            StartCoroutine(FireRate());
             currentMag--;
+            StartCoroutine(FireRate());
         }
         else if (isReloading == false && currentMag == 0)
         {
@@ -119,5 +119,4 @@ public class Gun : MonoBehaviour
     {
         ChangeAnimationState(GUN_IDLE); // Retorna ao estado neutro (Idle)
     }
-
 }

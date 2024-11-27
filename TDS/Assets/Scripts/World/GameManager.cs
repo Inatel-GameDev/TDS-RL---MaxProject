@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject pause_menu;
+    private GameObject playerObject;
+    private Gun gunScript;
     private bool paused;
     public GameDificult dificuldade;
     public string fase;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
         paused = false;
         // game = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         itensUI = GameObject.Find("UI_ITEN").GetComponent<UI_Itens>();
+        playerObject = GameObject.FindWithTag("Player");
+        gunScript = playerObject.GetComponent<Gun>();
     }
     void Update()
     {
@@ -50,9 +54,14 @@ public class GameManager : MonoBehaviour
     private void pause(bool paused)
     {
         if (paused)
+        {
             Time.timeScale = 0;
+            gunScript.canFire = false;
+        }
         else
+        {
             Time.timeScale = 1;
+        }
         pause_menu.SetActive(this.paused);
     }
 
