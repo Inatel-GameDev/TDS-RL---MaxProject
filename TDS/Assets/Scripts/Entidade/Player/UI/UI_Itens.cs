@@ -18,7 +18,7 @@ public class UI_Itens : MonoBehaviour
     public List<GameObject> instantiatedItems = new List<GameObject>();
     private float distH_inicial;//64
     private float distV_inicial;
-    private float distH_iten_iten = 180;
+    private float distH_iten_iten = 170;
     private float distV_iten_iten = -80;
     private float cont_iten = 0;
     [SerializeField]public float delayBetweenDeactivations;
