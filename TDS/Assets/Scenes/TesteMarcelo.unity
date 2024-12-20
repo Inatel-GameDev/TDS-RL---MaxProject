@@ -66203,6 +66203,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 644531617}
+    - target: {fileID: 4718170675731586850, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
+      propertyPath: tempoDash
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718170675731586850, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
+      propertyPath: cooldownDash
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5094207183800566056, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_Name
       value: Protag
