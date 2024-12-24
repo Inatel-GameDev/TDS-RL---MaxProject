@@ -4,24 +4,26 @@
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerMovement : Player
 {
     [Header("Objetos Unity")]
     public Gun gun;
     public Rigidbody2D centerRb;
 
-    [Header("Variáveis")]
+    [Header("Variï¿½veis")]
     Vector2 m_Position;
     private bool canDash = true;
     private bool isDashing = false;
 
     [Header("Dash")]
-    public float tempoDash = 1f;
+    public float tempoDash = 0.5f;
     public float poderDash = 3f;
-    public float cooldownDash = 5f;
+    public float cooldownDash = 4.0f;
+    private float dashCDCurrent = 4.5f;
+    public Slider dashSlider;
 
-    //Constantes animação
+    //Constantes animaï¿½ï¿½o
     const string PLAYER_IDLE = "PlayerIdle";
     const string PLAYER_RUN = "Player_Run";
     const string PLAYER_JUMP = "Player_Jump";
@@ -33,16 +35,16 @@ public class PlayerMovement : Player
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb == null) Debug.LogError("Rigidbody2D não encontrado!");
+        if (rb == null) Debug.LogError("Rigidbody2D nï¿½o encontrado!");
 
         sprite = GetComponent<SpriteRenderer>();
-        if (sprite == null) Debug.LogError("SpriteRenderer não encontrado!");
+        if (sprite == null) Debug.LogError("SpriteRenderer nï¿½o encontrado!");
 
         _animator = gameObject.GetComponent<Animator>();
-        if (_animator == null) Debug.LogError("Animator não encontrado!");
+        if (_animator == null) Debug.LogError("Animator nï¿½o encontrado!");
 
-        if (centerRb == null) Debug.LogError("centerRb não atribuído no Inspector!");
-        if (gun == null) Debug.LogError("Gun não atribuído no Inspector!");
+        if (centerRb == null) Debug.LogError("centerRb nï¿½o atribuï¿½do no Inspector!");
+        if (gun == null) Debug.LogError("Gun nï¿½o atribuï¿½do no Inspector!");
     }
 
 
@@ -57,6 +59,7 @@ public class PlayerMovement : Player
             if (Input.GetKeyDown(KeyCode.Q) && canDash == true)
             {
                 StartCoroutine(Dash());
+                dashCDCurrent = 0.0f;
             }
             if (Input.GetMouseButton(0))
             {
@@ -83,6 +86,21 @@ public class PlayerMovement : Player
             }
 
         m_Position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //Barra de cooldown do dash
+
+        dashCDCurrent += Time.deltaTime;
+        dashCDCurrent = Mathf.Clamp(dashCDCurrent, 0, (cooldownDash+tempoDash));
+        dashSlider.value = dashCDCurrent / (cooldownDash + tempoDash);
+
+        if(dashSlider.value >= 1)
+        {
+            dashSlider.gameObject.SetActive(false);
+        }
+        else
+        {
+            dashSlider.gameObject.SetActive(true);
+        }
     }
     
 
