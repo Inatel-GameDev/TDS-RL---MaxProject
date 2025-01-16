@@ -30,7 +30,7 @@ public class PlayerMovement : Player
     const string PLAYER_FALL = "Player_Fall";
     const string PLAYER_DAMAGE = "Player_damage";
     const string PLAYER_ATTACK = "Player_Attack";
-
+    const string PLAYER_DASH = "Player_Dash";
 
     private void Start()
     {
@@ -55,9 +55,10 @@ public class PlayerMovement : Player
         {
             moveHorizontal = Input.GetAxis("Horizontal");// Pega o input horizontal
             moveVertical = Input.GetAxis("Vertical");// Pega o input Vertical
-
             if (Input.GetKeyDown(KeyCode.Q) && canDash == true)
             {
+                state = 3;
+                canDash = false;
                 StartCoroutine(Dash());
                 dashCDCurrent = 0.0f;
             }
@@ -66,7 +67,7 @@ public class PlayerMovement : Player
                 gun.Fire();
             }
         }
-            if (vida <= 0)
+        if (vida <= 0)
                 logicaVida();
 
             switch (state)
@@ -82,6 +83,11 @@ public class PlayerMovement : Player
                     break;
                 case 2:
                     //tanking damage
+                    break;
+                case 3:
+                //They see me roling
+                if (!isDashing)
+                    state = 0;
                     break;
             }
 
@@ -126,6 +132,11 @@ public class PlayerMovement : Player
             case 2:
                 //tanking damage
                 state = 0;
+                break;
+            case 3:
+                gun_pivo_center();
+                if (groundMovement() == 0)
+                    state = 0;
                 break;
         }
        
@@ -192,9 +203,11 @@ public class PlayerMovement : Player
 
     private IEnumerator Dash()
     {
+        ChangeAnimationState(PLAYER_DASH);
         canDash = false;
         isDashing = true;
         yield return new WaitForSeconds(tempoDash);
+        ChangeAnimationState(PLAYER_RUN);
         isDashing = false;
         yield return new WaitForSeconds(cooldownDash);
         canDash = true;

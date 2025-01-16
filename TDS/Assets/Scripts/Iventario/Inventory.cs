@@ -35,32 +35,32 @@ public class Inventory : MonoBehaviour
         if (tufé > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "Tufé";
+            itens_name[itens_name.Length - 1] = "Tufé_iten";
         }
         if (pantufasDeBandidos > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "PantufasDeBandido";
+            itens_name[itens_name.Length - 1] = "PantufasDeBandido_iten";
         }
         if (leite > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "Leite";
+            itens_name[itens_name.Length - 1] = "Leite_iten";
         }
         if (macarroneide > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "Macarroneide";
+            itens_name[itens_name.Length - 1] = "Macarroneide_iten";
         }
         if (desfibrilador > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "Desfibrilador";
+            itens_name[itens_name.Length - 1] = "Desfibrilador_iten";
         }
         if (fibrilador > 0)
         {
             Array.Resize(ref itens_name, itens_name.Length + 1);
-            itens_name[itens_name.Length - 1] = "Fibrilador";
+            itens_name[itens_name.Length - 1] = "Fibrilador_iten";
         }
     }
 

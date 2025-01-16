@@ -15497,9 +15497,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1787746038}
+    - target: {fileID: 4007753075746885836, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5094207183800566056, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_Name
       value: Protag
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523689539641188924, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8619228507085389472, guid: a1e9f7511d10e9745a114627d79ce06f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23626,7 +23634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 414}
+  m_AnchoredPosition: {x: 0, y: 419}
   m_SizeDelta: {x: 863.99, y: 226.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580795391

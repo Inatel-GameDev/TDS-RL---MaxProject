@@ -14,12 +14,12 @@ public class UI_Itens : MonoBehaviour
     [Header("Itens")]
     [SerializeField] private GameObject item_storage;
     [SerializeField] private GameObject act;
-    [SerializeField] private GameObject[] image_itens;
+    [SerializeField] private Image[] image_itens;
     public List<GameObject> instantiatedItems = new List<GameObject>();
-    private float distH_inicial;//64
-    private float distV_inicial;
-    private float distH_iten_iten = 170;
-    private float distV_iten_iten = -80;
+    [SerializeField]private float distH_inicial;//64
+    [SerializeField]private float distV_inicial;
+    [SerializeField]private float distH_iten_iten;
+    [SerializeField]private float distV_iten_iten;
     private float cont_iten = 0;
     [SerializeField]public float delayBetweenDeactivations;
     [SerializeField] private float time_to_intes_desapear;
@@ -33,8 +33,6 @@ public class UI_Itens : MonoBehaviour
             item_interface.SetActive(false); // Certifique-se de que o objeto começa desativado
             initialScale = item_interface.transform.localScale;
         }
-        distH_inicial = 33f / 40f;
-        distV_inicial = -50f / 45f;
     }
 
     public void ActivateAndScaleUp()
@@ -75,12 +73,12 @@ public class UI_Itens : MonoBehaviour
 
     public void sapawn_iten_image(string[] itens_name)
     {
-        GameObject instanciate_iten;
+        Image instanciate_iten;
         int itensPorLinha = 3; // Quantidade de itens por linha
 
         foreach (string iten in itens_name)
         {
-            foreach (GameObject image in image_itens)
+            foreach (Image image in image_itens)
             {
                 string nome_atual = image.name;
                 Transform filho = item_storage.transform.Find(nome_atual+ "(Clone)");
@@ -119,10 +117,10 @@ public class UI_Itens : MonoBehaviour
             DeactivateAllItems();
     }
 
-    public void CreateItem(Vector3 position, GameObject image)
+    public void CreateItem(Vector3 position, Image image)
     {
         // Instanciar o item
-        GameObject instanciateItem = Instantiate(image, position, item_storage.transform.rotation);
+        GameObject instanciateItem = Instantiate(image.gameObject, position, item_storage.transform.rotation);
 
         // Definir o pai e a camada
         instanciateItem.transform.SetParent(item_storage.transform, true);
