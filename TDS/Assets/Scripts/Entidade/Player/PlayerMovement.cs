@@ -59,6 +59,7 @@ public class PlayerMovement : Player
             {
                 state = 3;
                 canDash = false;
+                ChangeAnimationState(PLAYER_DASH);
                 StartCoroutine(Dash());
                 dashCDCurrent = 0.0f;
             }
@@ -198,12 +199,11 @@ public class PlayerMovement : Player
         }
 
         rb.position = position;
-        return moveHorizontal+moveVertical;
+        return Mathf.Abs(moveHorizontal)+ Mathf.Abs(moveVertical);
     }
 
     private IEnumerator Dash()
     {
-        ChangeAnimationState(PLAYER_DASH);
         canDash = false;
         isDashing = true;
         yield return new WaitForSeconds(tempoDash);
